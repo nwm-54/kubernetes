@@ -49,5 +49,11 @@ def objects():
                 "requireIPv6PodCIDR": True,
                 "requireIPv4PodCIDR": True,
             },
+            "controller": {
+                "metrics": {
+                    "enabled": True, 
+                    "serviceMonitor": {"enabled": True},
+                }
+            },
         },
     )

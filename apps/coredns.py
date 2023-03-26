@@ -8,6 +8,12 @@ values = {
     "service": {
         "clusterIP": "10.96.0.10",
     },
+    "controller": {
+        "metrics": {
+            "enabled": True, 
+            "serviceMonitor": {"enabled": True},
+        },
+    },
 }
 
 name = "coredns"
