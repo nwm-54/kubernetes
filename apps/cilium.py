@@ -17,6 +17,8 @@ def objects():
                 "listenAddress": ":4244",
                 "relay": {"enabled": True},
                 "ui": {"enabled": True},
+                "enabled": True,
+                "serviceMonitor": {"enable": True},
             },
             "ipam": {
                 "mode": "kubernetes",
