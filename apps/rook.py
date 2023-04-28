@@ -188,7 +188,7 @@ def objects():
         "apiVersion": "storage.k8s.io/v1",
         "kind": "StorageClass",
         "metadata": {"name": "cephfs-nvme"},
-        "provisioner": "rook-ceph.cephfs.csi.ceph.com",
+        "provisioner": "rook.cephfs.csi.ceph.com",
         "parameters": {
             "clusterID": "rook",
             "fsName": "cephfs-hybrid",
@@ -207,7 +207,7 @@ def objects():
         "apiVersion": "storage.k8s.io/v1",
         "kind": "StorageClass",
         "metadata": {"name": "cephfs-hdd"},
-        "provisioner": "rook-ceph.cephfs.csi.ceph.com",
+        "provisioner": "rook.cephfs.csi.ceph.com",
         "parameters": {
             "clusterID": "rook",
             "fsName": "cephfs-hybrid",
@@ -313,9 +313,20 @@ def objects():
             "gateway": {
                 "securePort": 443,
                 "port": 80,
-                "sslCertificateRef": crtname,
                 "instances": 1,
             },
             "healthCheck": {"bucket": {"disabled": False, "interval": "120s"}},
+        },
+    }
+
+    yield {
+        "apiVersion": "storage.k8s.io/v1",
+        "kind": "StorageClass",
+        "metadata": {"name": "rgw-hdd"},
+        "provisioner": "rook.ceph.rook.io/bucket",
+        "reclaimPolicy": "Delete",
+        "parameters": {
+            "objectStoreName": "rgw-hdd",
+            "objectStoreNamespace": "rook-ceph",
         },
     }
